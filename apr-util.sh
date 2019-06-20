@@ -6,7 +6,7 @@ file_name="${name}-${version}.tar.bz2"
 url=https://archive.apache.org/dist/apr/${file_name}
 strip=1
 arch=x86_64
-configure_options="/configure --prefix=/usr       \
+configure_options="--prefix=/usr       \
             --with-apr=/usr     \
             --with-gdbm=/usr    \
             --with-openssl=/usr \
