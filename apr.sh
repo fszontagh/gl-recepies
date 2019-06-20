@@ -2,7 +2,7 @@
 # Package: apr
 # Tested  version: apr 1.7.0
 #
-file_name="{$name}-${version}.tar.bz2"
+file_name="${name}-${version}.tar.bz2"
 url=https://archive.apache.org/dist/apr/${file_name}
 strip=1
 arch=x86_64
