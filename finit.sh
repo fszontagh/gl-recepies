@@ -19,7 +19,7 @@ configure_options="--prefix=/usr \
 
 
 function post_make() {
-	mkdir -p ${PKG}/etc/finit.d/available
+	mkdir -pv ${PKG}/etc/finit.d/available
 	
 #create default finit conf file	
 cat > "${PKG}/etc/finit.conf" << "EOF"
