@@ -14,9 +14,11 @@ configure_options="--prefix=/usr         \
 
 
 function post_make() {
-	mv -v /usr/lib/libacl.so.* /lib
-	ln -sfv ../../lib/$(readlink /usr/lib/libacl.so) /usr/lib/libacl.so
-
+	cd ${1}
+	mv -v ${1}/usr/lib/libacl.so.* ${1}/lib
+	ln -sfv ../../lib/libacl.so.1 $PKG/usr/lib/libacl.so
+	mkdir -p ${1}/usr/share/doc
+	install -v -m644 doc/*.txt ${1}/usr/share/doc/acl-$version
 }
 
 function configure() {
