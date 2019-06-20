@@ -18,7 +18,7 @@ function post_make() {
 	mv -v ${1}/usr/lib/libacl.so.* ${1}/lib/
 	ln -sfv ../../lib/libacl.so.1 ${1}/usr/lib/libacl.so
 	mkdir -p ${1}/usr/share/doc
-	install -v -m644 doc/*.txt ${1}/usr/share/doc/acl-$version
+	install -v -m644 ${1}/doc/*.txt ${1}/usr/share/doc/acl-$version
 }
 
 function pre_make() {
