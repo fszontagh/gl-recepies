@@ -17,8 +17,8 @@ function post_make() {
 	cd ${1}
 	[ -e "${1}/lib" ] || mkdir ${1}/lib
 	
-	mv -v ${1}/usr/lib/libattr.so.* ${1}/lib
-	ln -sfv ${1}../../lib/$(readlink /usr/lib/libattr.so) ${1}/usr/lib/libattr.so
+	mv -v ${1}/usr/lib/libattr.so.* ${1}/lib	
+	ln -sfv ../../lib/libattr.so.1 ${1}/usr/lib/libattr.so
 }
 
 function pre_make() {
