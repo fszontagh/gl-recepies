@@ -18,7 +18,13 @@ function post_make() {
 
 }
 
+function configure() {
+		echo "Configuring in : ${1}..."
+		cd ${1}
+		./configure ${configure_options} 
+}
 
 function build() {
 		echo "Starting build... ${name} in ${SOURCES}"
+		make -j${NUMCPU} && make DESTDIR="${1}" install
 }
