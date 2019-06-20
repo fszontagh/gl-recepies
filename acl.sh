@@ -15,10 +15,14 @@ configure_options="--prefix=/usr         \
 
 function post_make() {
 	cd ${1}
-	mv -v ${1}/usr/lib/libacl.so.* ${1}/lib
-	ln -sfv ../../lib/libacl.so.1 $PKG/usr/lib/libacl.so
+	mv -v ${1}/usr/lib/libacl.so.* ${1}/lib/
+	ln -sfv ../../lib/libacl.so.1 ${1}/usr/lib/libacl.so
 	mkdir -p ${1}/usr/share/doc
 	install -v -m644 doc/*.txt ${1}/usr/share/doc/acl-$version
+}
+
+function pre_make() {
+		echo "Executing make..."
 }
 
 function configure() {
