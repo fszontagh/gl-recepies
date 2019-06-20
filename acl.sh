@@ -5,6 +5,7 @@
 file_name="${name}"-"${version}".tar.gz
 url=http://quantum-mirror.hu/mirrors/pub/gnusavannah/acl/${file_name}
 strip=1
+arch=x86_64
 configure_options="--prefix=/usr         \
             --bindir=/bin         \
             --disable-static      \
