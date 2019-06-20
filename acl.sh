@@ -15,8 +15,10 @@ configure_options="--prefix=/usr         \
 
 function post_make() {
 	cd ${1}
+	[ -d "${1}/lib" ] || mkdir ${1}/lib
 	mv -v ${1}/usr/lib/libacl.so.* ${1}/lib/
-	ln -sfv ../../lib/libacl.so.1 ${1}/usr/lib/libacl.so
+	cd ${1}/usr/lib	
+	ln -sfv ../../lib/libacl.so.1 ${1}/libacl.so
 	mkdir -p ${1}/usr/share/doc
 	install -v -m644 ${1}/doc/*.txt ${1}/usr/share/doc/acl-$version
 }
