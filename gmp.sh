@@ -17,7 +17,7 @@ function post_make() {
 	rm -rf ${PKG}/usr/share/info/dir
 	# Documentation
 	mkdir -p ${PKG}/usr/share/doc/gmp-${version}
-	cp doc/{isa_abi_headache,configuration} doc/*.html ${PKG}/usr/share/doc/gmp-${version}	
+	cp ${SOURCE_DIR}/doc/{isa_abi_headache,configuration} ${SOURCE_DIR}/doc/*.html ${PKG}/usr/share/doc/gmp-${version}	
 }
 
 function pre_make() {
