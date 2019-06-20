@@ -35,13 +35,14 @@ function pre_make() {
 
 function configure() {
 		echo "Configuring in : ${1}..."
-		cd ${1}
-		mkdir -v build
+		cd "${1}"
+		[ -e "build" ] || mkdir -v build		
 		cd build		
-		./configure ${configure_options} 
+		../configure ${configure_options} 
 }
 
 function build() {
 		echo "Starting build... ${name} in ${SOURCES}"
+		cd ${SOURCE_DIR}/build
 		make tooldir=/usr -j${NUMCPU} && make tooldir=/usr DESTDIR="${1}" install
 }
