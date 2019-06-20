@@ -36,5 +36,5 @@ function configure() {
 
 function build() {
 		echo "Starting build... ${name} in ${SOURCES}"
-		make -j${NUMCPU} && make DESTDIR="${1}" install
+		make -j${NUMCPU} && make DESTDIR="${1}" install && make DESTDIR="${1}" html
 }
