@@ -1,20 +1,21 @@
 #
 # Package: sudo
-# Tested version: sudo 1.8.12
+# Tested version: sudo 1.8.27
 #
 file_name="${name}"-"${version}".tar.gz
 url=http://www.sudo.ws/sudo/dist/${file_name}
 strip=1
 arch=x86_64
 #the default configure options
-configure_options="		--prefix=/usr 							\
-						--libexecdir=/usr/lib 					\
-						--docdir=/usr/share/doc/sudo-$version 	\
-						--with-all-insults 						\
-						--with-env-editor 						\
-						--without-sendmail 						\
-						--with-passprompt='[sudo] password for %p: '"
-
+read -d '' configure_options <<- _EOF_
+--prefix=/usr
+--libexecdir=/usr/lib
+--docdir=/usr/share/doc/sudo-${version}
+--with-all-insults
+--with-env-editor
+--without-sendmail
+--with-passprompt="[sudo] password for %p: "
+_EOF_
 
 function post_make() {
 	#${PKG} is the package dir
