@@ -14,7 +14,7 @@ read -d '' configure_options <<- "_EOF_"
 --with-all-insults
 --with-env-editor
 --without-sendmail
---with-passprompt="[sudo] password for %p: "
+--with-passprompt=\"[sudo] password for %p: \"
 _EOF_
 
 function post_make() {
@@ -61,7 +61,7 @@ function configure() {
 	#${SOURCE_DIR} is equal with the ${1}
 	echo "Configuring in : ${1}..."
 	cd ${1}
-	./configure '${configure_options}'
+	./configure $configure_options
 }
 
 function build() {
