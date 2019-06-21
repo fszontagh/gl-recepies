@@ -18,7 +18,30 @@ function post_make() {
 	#${PKG} is the package dir
 	#${SOURCE_DIR} is the source dir, where run the compile and the make
 	#${1} is equal with the ${SOURCE_DIR}
-	echo -en "";
+	cd ${SOURCE_DIR}
+	mkdir -pv ${PKG}/{bin,lib}
+
+	cp -v bzip2-shared ${PKG}/bin/bzip2
+	cp -av libbz2.so* ${PKG}/lib
+	ln -sv ../../lib/libbz2.so.1.0 ${PKG}/usr/lib/libbz2.so
+	rm -v ${PKG}/usr/bin/{bunzip2,bzcat,bzip2}
+	mv -v $PKG/usr/bin/* ${PKG}/bin
+	for i in bzegrep bzfgrep 
+	do
+	  ln -svf bzgrep ${PKG}/bin/$i
+	done
+	for i in bunzip2 bzcat
+	do
+	 ln -svf bzip2 ${PKG}/bin/$i
+	done
+	for i in  bzless 
+	do
+	 ln -svf bzmore ${PKG}/bin/$i
+	done
+	for i in bzcmp
+	do
+	 ln -svf bzdiff ${PKG}/bin/$i
+	done	
 }
 
 function pre_make() {
@@ -33,11 +56,8 @@ function pre_make() {
 		cd ..	
 		#pach to docs
 		wget http://www.linuxfromscratch.org/patches/lfs/development/bzip2-${version}-install_docs-1.patch
-		#patch to DESTDIR variable
-		wget https://pub.sortix.org/sortix/release/nightly/patches/${name}.patch
 		cd ${SOURCE_DIR}
 		patch -Np1 -i ../bzip2-$version-install_docs-1.patch
-		patch -Np1 -i ../${name}.patch
 		sed -i 's@\(ln -s -f \)/bin/@\1@' Makefile
 		sed -i "s@(PREFIX)/man@(PREFIX)/share/man@g" Makefile		
 	fi;
@@ -60,6 +80,7 @@ function build() {
 	echo "Starting build... ${name} in ${SOURCES}"
 	make -f Makefile-libbz2_so
 	make clean
-	make DESTDIR="${1}" install
+	make PREFIX="${1}" install
+	
 	#make -j${NUMCPU} && make DESTDIR="${1}" install
 }
