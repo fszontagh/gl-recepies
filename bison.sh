@@ -1,6 +1,6 @@
 #
 # Package: bison
-# Tested version bison 3.0.4
+# Tested version bison 3.4.1
 # 
 file_name="${name}"-"${version}".tar.xz
 url=http://ftp.gnu.org/gnu/${name}/${file_name}
