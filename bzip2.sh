@@ -3,7 +3,7 @@
 # Tested version: bzip2 1.0.6
 # http://www.bzip.org/$version/bzip2-$version.tar.gz
 file_name="${name}"-"${version}".tar.gz
-url=http://www.bzip.org/${version}/${file_name}
+url=https://netix.dl.sourceforge.net/project/bzip2/${file_name}
 strip=1
 arch=x86_64
 #the default configure options
