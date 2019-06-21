@@ -7,15 +7,7 @@ url=http://www.sudo.ws/sudo/dist/${file_name}
 strip=1
 arch=x86_64
 #the default configure options
-read -d '' configure_options <<- _EOF_
---prefix=/usr
---libexecdir=/usr/lib
---docdir=/usr/share/doc/sudo-${version}
---with-all-insults
---with-env-editor
---without-sendmail
---with-passprompt=\"[sudo] password for %p: \"
-_EOF_
+configure_options = "--prefix=/usr --libexecdir=/usr/lib --docdir=/usr/share/doc/sudo-${version} --with-all-insults --with-env-editor --without-sendmail --with-passprompt=\"[sudo] password for %p: \""
 
 function post_make() {
 	#${PKG} is the package dir
@@ -61,7 +53,7 @@ function configure() {
 	#${SOURCE_DIR} is equal with the ${1}
 	echo "Configuring in : ${1}..."
 	cd ${1}
-	exec ./configure ${configure_options}
+	./configure ${configure_options}
 }
 
 function build() {
