@@ -18,12 +18,13 @@ function post_make() {
 	#${PKG} is the package dir
 	#${SOURCE_DIR} is the source dir, where run the compile and the make
 	#${1} is equal with the ${SOURCE_DIR}
-	ln -s bin/bash bin/sh
-	
+
+cd ${PKG}
+ln -sv bin/bash ${PKG}bin/sh	
 mkdir ${PKG}/etc -p
 mkdir ${PKG}/etc/skel -p
 rm -rf ${PKG}/usr/share/info/dir
-cat > /etc/profile << "EOF"
+cat > ${PKG}/etc/profile << "EOF"
 # Begin /etc/profile
 # Written for Beyond Linux From Scratch
 # by James Robertson <jameswrobertson@earthlink.net>
@@ -100,7 +101,7 @@ done
 
 unset script RED GREEN NORMAL
 EOF
-cat > /etc/skel/.bashrc << "EOF"
+cat > ${PKG}/etc/skel/.bashrc << "EOF"
 # Begin ~/.bashrc
 # Written for Beyond Linux From Scratch
 # by James Robertson <jameswrobertson@earthlink.net>
@@ -124,7 +125,7 @@ fi;
 # End ~/.bashrc
 EOF
 
-cat > /etc/bashrc << "EOF"
+cat > ${PKG}/etc/bashrc << "EOF"
 # Begin /etc/bashrc
 # Written for Beyond Linux From Scratch
 # by James Robertson <jameswrobertson@earthlink.net>
@@ -162,7 +163,7 @@ unset RED GREEN NORMAL
 
 # End /etc/bashrc
 EOF
-cat > /etc/skel/.bash_profile << "EOF"
+cat > ${PKG}/etc/skel/.bash_profile << "EOF"
 # Begin ~/.bash_profile
 # Written for Beyond Linux From Scratch
 # by James Robertson <jameswrobertson@earthlink.net>
