@@ -29,6 +29,8 @@ function pre_make() {
 	#${1} there is no parameter to the function.
 	# This function called before configure on the source
 	echo -en ""
+	cd ${SOURCE_DIR}
+	sed -i '6855 s/mv/cp/' Makefile.in
 }
 
 function configure() {
@@ -44,5 +46,5 @@ function build() {
 	#${SOURCE_DIR} is the sources dir
 	# Default, the make running in the ${SOURCE_DIR}, because the configure function cding into this dir
 	echo "Starting build... ${name} in ${SOURCES}"
-	make -j${NUMCPU} && make DESTDIR="${1}" install
+	make -j1 && make DESTDIR="${1}" install
 }
