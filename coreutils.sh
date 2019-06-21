@@ -50,7 +50,8 @@ function configure() {
 	echo "Configuring in : ${1}..."
 	cd ${1}
 	autoreconf -fiv 
-	FORCE_UNSAFE_CONFIGURE=1 ./configure ${configure_options}
+	export FORCE_UNSAFE_CONFIGURE=1
+	./configure ${configure_options}
 }
 
 function build() {
@@ -58,5 +59,5 @@ function build() {
 	#${SOURCE_DIR} is the sources dir
 	# Default, the make running in the ${SOURCE_DIR}, because the configure function cding into this dir
 	echo "Starting build... ${name} in ${SOURCES}"
-	make -j${NUMCPU} && make DESTDIR="${1}" install
+	make -j${NUMCPU} && make FORCE_UNSAFE_CONFIGURE=1 DESTDIR="${1}" install
 }
