@@ -1,6 +1,6 @@
 #
 # Package: autoconf
-# Tested version: autoconfig 2.69
+# Tested version: autoconf 2.69
 # 
 file_name="${name}"-"${version}".tar.xz
 url=http://ftp.gnu.org/gnu/${name}/${file_name}
