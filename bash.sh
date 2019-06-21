@@ -20,7 +20,7 @@ function post_make() {
 	#${1} is equal with the ${SOURCE_DIR}
 
 cd ${PKG}
-ln -sv bin/bash ${PKG}bin/sh	
+ln -sv bin/bash ${PKG}/bin/sh	
 mkdir ${PKG}/etc -p
 mkdir ${PKG}/etc/skel -p
 rm -rf ${PKG}/usr/share/info/dir
@@ -196,7 +196,7 @@ function pre_make() {
 	#${PKG} is the package dir
 	#${SOURCE_DIR} is the source dir, where run the compile and the make
 	#${1} there is no parameter to the function.
-	# This function called before configure on the source
+	# This function called before configure on the source	
 	echo -en ""
 }
 
