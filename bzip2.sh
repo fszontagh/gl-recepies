@@ -80,7 +80,7 @@ function build() {
 	echo "Starting build... ${name} in ${SOURCES}"
 	make -f Makefile-libbz2_so
 	make clean
-	make PREFIX="${1}" install
+	make PREFIX="${1}/usr" install
 	
 	#make -j${NUMCPU} && make DESTDIR="${1}" install
 }
