@@ -32,13 +32,15 @@ function pre_make() {
 	#${1} there is no parameter to the function.
 	# This function called before configure on the source
 	echo -en ""
-	cd ${PKG}
+	cd ${SOURCE_DIR}
 	if [ ! -e "../$name-$version-i18n-1.patch" ]; then
 		cd ..
 		wget http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-i18n-1.patch
+		cd ${SOURCE_DIR}
 		patch -Np1 -i ../$name-$version-i18n-1.patch
 		sed -i '/test.lock/s/^/#/' gnulib-tests/gnulib.mk
 	fi;
+	
 	
 }
 
@@ -47,7 +49,8 @@ function configure() {
 	#${SOURCE_DIR} is equal with the ${1}
 	echo "Configuring in : ${1}..."
 	cd ${1}
-	autoreconf -fiv && FORCE_UNSAFE_CONFIGURE=1 ./configure ${configure_options}
+	autoreconf -fiv 
+	FORCE_UNSAFE_CONFIGURE=1 ./configure ${configure_options}
 }
 
 function build() {
