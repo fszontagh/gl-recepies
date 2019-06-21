@@ -1,24 +1,23 @@
 #
-# Package: bc
-# Tested version: bc 1.07.1
+# Package: autoconf
+# Tested version: autoconfig 2.69
 # 
-file_name="${name}"-"${version}".tar.gz
-url=http://ftp.gnu.org/gnu/bc/${file_name}
+file_name="${name}"-"${version}".tar.xz
+url=http://ftp.gnu.org/gnu/${name}/${file_name}
 strip=1
 arch=x86_64
 #the default configure options
 configure_options=" \
-			--prefix=/usr           \
-            --with-readline         \
-            --mandir=/usr/share/man \
-            --infodir=/usr/share/info"
+					--prefix=/usr \
+					--sysconfdir=/etc \
+					--localstatedir=/var \
+					--disable-static"
 
 
 function post_make() {
 	#${PKG} is the package dir
 	#${SOURCE_DIR} is the source dir, where run the compile and the make
 	#${1} is equal with the ${SOURCE_DIR}
-	echo -en "";
 	rm -rf ${PKG}/usr/share/info/dir
 }
 
@@ -27,20 +26,7 @@ function pre_make() {
 	#${SOURCE_DIR} is the source dir, where run the compile and the make
 	#${1} there is no parameter to the function.
 	# This function called before configure on the source
-	cd ${SOURCE_DIR}
-cat > bc/fix-libmath_h << "EOF"
-#! /bin/bash
-sed -e '1   s/^/{"/' \
-    -e     's/$/",/' \
-    -e '2,$ s/^/"/'  \
-    -e   '$ d'       \
-    -i libmath.h
-
-sed -e '$ s/$/0}/' \
-    -i libmath.h
-EOF
-
-sed -i -e '/flex/s/as_fn_error/: ;; # &/' configure	
+	echo -en ""
 }
 
 function configure() {
