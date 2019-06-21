@@ -14,7 +14,6 @@ read -d '' configure_options <<- _EOF_
 --with-all-insults
 --with-env-editor
 --without-sendmail
---with-passprompt="[sudo] password for %p: "
 _EOF_
 
 function post_make() {
