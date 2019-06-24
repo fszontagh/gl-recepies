@@ -15,6 +15,8 @@ function post_make() {
 	#${SOURCE_DIR} is the source dir, where run the compile and the make
 	#${1} is equal with the ${SOURCE_DIR}
 	echo -en "";
+	cd ${PKG}
+	ln -s ${PKG}/lib/$(readlink libz.so) ${PKG}/usr/lib/
 }
 
 function pre_make() {
