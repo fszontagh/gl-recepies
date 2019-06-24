@@ -18,6 +18,7 @@ function post_make() {
 	#${PKG} is the package dir
 	#${SOURCE_DIR} is the source dir, where run the compile and the make
 	#${1} is equal with the ${SOURCE_DIR}
+	echo -en ""
 }
 
 function pre_make() {
