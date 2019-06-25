@@ -1,30 +1,20 @@
 #
-# Package: vim
-# Tested version: vim 8.1
+# Package: util-linux
+# Tested version: util-linux 2.34
 #
-file_name="${name}"-"${version}".tar.bz2
-url=ftp://ftp.vim.org/pub/vim/unix/${file_name}
+file_name="${name}"-"${version}".tar.xz
+url=http://www.kernel.org/pub/linux/utils/util-linux/v${version:0:4}/${file_name}
 strip=1
 arch=x86_64
 #the default configure options
-configure_options="--prefix=/usr --enable-multibyte --enable-gui=no --with-x=no --disable-gpm"
-curdir=`pwd`
+configure_options="ADJTIME_PATH=/var/lib/hwclock/adjtime --docdir=/usr/share/doc/${name}-${version} --disable-chfn-chsh --disable-login --disable-nologin --disable-su --disable-setpriv --disable-runuser --disable-pylibmount --disable-static --without-python --without-systemd --without-systemdsystemunitdir"
+
 
 function post_make() {
 	#${PKG} is the package dir
 	#${SOURCE_DIR} is the source dir, where run the compile and the make
 	#${1} is equal with the ${SOURCE_DIR}
-	
-	ln -sv vim ${PKG}/usr/bin/vi
-	for L in ${PKG}/usr/share/man/{,*/}man1/vim.1; do
-			ln -sv vim.1 $(dirname $L)/vi.1
-	done
-	ln -sv ../vim/vim${version/./}/doc ${PKG}/usr/share/doc/vim-${version}
-	rm -rfv ${PKG}/usr/share/applications
-	rm -rfv ${PKG}/usr/share/icons
-	mkdir -p ${PKG}/etc
-	cp -p ${curdir}/vim.post.install.sh ${PKG}/post.install.sh
-	chmod 777 ${PKG}/post.install.sh
+	echo -en ""
 }
 
 function pre_make() {
@@ -33,7 +23,7 @@ function pre_make() {
 	#${1} there is no parameter to the function.
 	# This function called before configure on the source
 	echo -en ""
-	mkdir -pv ${PKG}/usr/share/locale
+	mkdir -pv ${PKG}/var/lib/hwclock
 }
 
 function configure() {
@@ -41,7 +31,6 @@ function configure() {
 	#${SOURCE_DIR} is equal with the ${1}
 	echo "Configuring in : ${1}..."
 	cd ${1}
-	echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h
 	./configure ${configure_options}
 }
 
@@ -50,5 +39,5 @@ function build() {
 	#${SOURCE_DIR} is the sources dir
 	# Default, the make running in the ${SOURCE_DIR}, because the configure function cding into this dir
 	echo "Starting build... ${name} in ${SOURCES}"
-	make -j${NUMCPU} && make DESTDIR="${1}" DEST_HELP=${PKG}/usr/share/doc/vim-${version} LANGSUBLOC=/usr/share/locale install
+	make -j${NUMCPU} && make DESTDIR="${1}" install
 }
