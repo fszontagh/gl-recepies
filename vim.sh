@@ -23,7 +23,7 @@ function post_make() {
 	rm -rfv ${PKG}/usr/share/applications
 	rm -rfv ${PKG}/usr/share/icons
 	mkdir -p ${PKG}/etc
-	cp -p vim.post.install.sh ${PKG}/post.install.sh
+	cp -p `dirname $0`/vim.post.install.sh ${PKG}/post.install.sh
 	chmod 777 ${PKG}/post.install.sh
 }
 
