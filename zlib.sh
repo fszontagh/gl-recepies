@@ -14,9 +14,8 @@ function post_make() {
 	#${PKG} is the package dir
 	#${SOURCE_DIR} is the source dir, where run the compile and the make
 	#${1} is equal with the ${SOURCE_DIR}
-	echo -en "";
 	cd ${PKG}
-	ln -sv ${PKG}/lib/$(readlink libz.so) ${PKG}/usr/lib/
+	ln -sfv ../../lib/libz.so.$version  ${PKG}/usr/lib/libz.so
 }
 
 function pre_make() {
