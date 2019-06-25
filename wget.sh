@@ -3,7 +3,7 @@
 # Tested version: wget 1.20.3
 #
 file_name="${name}"-"${version}".tar.gz
-url=(http://ftp.gnu.org/gnu/${name}/${file_name}
+url=http://ftp.gnu.org/gnu/${name}/${file_name}
 strip=1
 arch=x86_64
 #the default configure options
