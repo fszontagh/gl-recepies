@@ -4,8 +4,8 @@
 #
 file_name="${name}${version}".tar.gz
 url=http://www.iana.org/time-zones/repository/releases/${file_name}
-strip=1
-arch=x86_64
+strip=0
+arch=noarch
 #the default configure options
 configure_options=""
 
@@ -19,11 +19,11 @@ function post_make() {
 	#${PKG} is the package dir
 	#${SOURCE_DIR} is the source dir, where run the compile and the make
 	#${1} is equal with the ${SOURCE_DIR}
-	cd ${PKG}
-	/usr/sbin/zic -y ./yearistype -d ${PKG}/usr/share/zoneinfo ${timezones[@]}
-	/usr/sbin/zic -y ./yearistype -d ${PKG}/usr/share/zoneinfo/posix ${timezones[@]}
-	/usr/sbin/zic -y ./yearistype -d ${PKG}/usr/share/zoneinfo/right -L leapseconds ${timezones[@]}
-	/usr/sbin/zic -y ./yearistype -d ${PKG}/usr/share/zoneinfo -p America/New_York
+	cd ${SOURCE_DIR}
+	/usr/sbin/zic -d ${PKG}/usr/share/zoneinfo ${timezones[@]}
+	/usr/sbin/zic -d ${PKG}/usr/share/zoneinfo/posix ${timezones[@]}
+	/usr/sbin/zic -d ${PKG}/usr/share/zoneinfo/right -L leapseconds ${timezones[@]}
+	/usr/sbin/zic -d ${PKG}/usr/share/zoneinfo -p America/New_York
 	install -m444 -t ${PKG}/usr/share/zoneinfo iso3166.tab zone.tab	
 }
 
