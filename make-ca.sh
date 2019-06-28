@@ -23,7 +23,7 @@ cat > /etc/cron.weekly/update-pki.sh << EOF
 EOF
 	chmod 754 ${PKG}/etc/cron.weekly/update-pki.sh	
 	echo "Copy post install script..."
-	cp -pv ${RECEPIES}/pciutils.post.install.sh ${PKG}/post.install.sh	
+	cp -pv ${RECEPIES}/make-ca.post.install.sh ${PKG}/post.install.sh	
 }
 
 function pre_make() {
