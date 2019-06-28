@@ -17,7 +17,8 @@ function post_make() {
 	chmod -v 755 ${PKG}/usr/lib/libpci.so
 	#for cron	
 	cp -pv ${RECEPIES}/pciutils.post.install.sh ${PKG}/post.install.sh
-	chmod -v 777 ${PKG}/post.install.sh
+	chmod -v 777 ${PKG}/post.install.sh	
+	chmod -v 755 ${PKG}/usr/lib/libpci.so.${version}
 }
 
 function pre_make() {
@@ -25,7 +26,8 @@ function pre_make() {
 	#${SOURCE_DIR} is the source dir, where run the compile and the make
 	#${1} there is no parameter to the function.
 	# This function called before configure on the source
-	echo -en ""
+	mkdir -pv ${PKG}/usr/share/man
+	mkdir -pv ${PKG}/usr/lib
 }
 
 function configure() {
@@ -40,6 +42,7 @@ function build() {
 	#${SOURCE_DIR} is the sources dir
 	# Default, the make running in the ${SOURCE_DIR}, because the configure function cding into this dir
 	echo "Starting build... ${name} in ${SOURCES}"
-	make PREFIX=/usr SHAREDIR=/usr/share/hwdata SHARED=yes -j${NUMCPU} all
-	make PREFIX=/usr SHAREDIR=/usr/share/hwdata SHARED=yes install install-lib 	
+	make PREFIX=${PKG}/usr SHAREDIR=${PKG}/usr/share/hwdata MANDIR=${PKG}/usr/share/man SHARED=yes ZLIB=no -j${NUMCPU} all
+	make PREFIX=${PKG}/usr SHAREDIR=${PKG}/usr/share/hwdata MANDIR=${PKG}/usr/share/man SHARED=yes ZLIB=no install install-lib	
+	
 }
