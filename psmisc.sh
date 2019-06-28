@@ -1,23 +1,20 @@
 #
 # Package: psmisc
-# Tested version: psmisc
+# Tested version: psmisc 23.2
 #
 file_name="${name}"-"${version}".tar.gz
-url=http://quantum-mirror.hu/mirrors/pub/gnusavannah/attr/${file_name}
+url=http://prdownloads.sourceforge.net/psmisc/${file_name}
 strip=1
 arch=x86_64
 #the default configure options
-configure_options=" \
-					--prefix=/usr \
-					--sysconfdir=/etc \
-					--localstatedir=/var \
-					--disable-static"
+configure_options="--prefix=/usr --libdir=/lib --bindir=/bin"
 
 
 function post_make() {
 	#${PKG} is the package dir
 	#${SOURCE_DIR} is the source dir, where run the compile and the make
 	#${1} is equal with the ${SOURCE_DIR}
+	echo -en ""
 }
 
 function pre_make() {
