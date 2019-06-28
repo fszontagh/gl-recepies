@@ -33,7 +33,8 @@ function configure() {
 	#${SOURCE_DIR} is equal with the ${1}
 	echo "Configuring in : ${1}..."
 	cd ${1}
-	./configure ${configure_options}
+	sed -i '/parse_time.h/i #define _GNU_SOURCE' lib/parse_time.c &&
+	autoreconf -fiv && ./configure ${configure_options}
 }
 
 function build() {
