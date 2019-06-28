@@ -1,9 +1,9 @@
 #
 # Package: xmlto
-# Tested version: xmlto 0.0.26
+# Tested version: xmlto 0.0.28
 #
 file_name="${name}"-"${version}".tar.bz2
-url=https://fedorahosted.org/releases/x/m/xmlto/${file_name}
+url=https://releases.pagure.org/xmlto/${file_name}
 strip=1
 arch=x86_64
 #the default configure options
