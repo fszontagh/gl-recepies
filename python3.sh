@@ -2,7 +2,7 @@
 # Package: python3
 # Tested version: python3 3.7.3
 #
-file_name=Pytnon-${version}.tgz
+file_name=Python-${version}.tgz
 url=https://www.python.org/ftp/${name}/${version}/${file_name}
 strip=1
 arch=x86_64
