@@ -29,8 +29,6 @@ sudo.* -/var/log/sudo.log
 # End /etc/syslog.conf
 EOF
 
-mkdir ${PKG}/etc/finit.d/available/
-
 cat > ${PKG}/etc/finit.d/available/sysklogd.conf << "EOF"
 service [S12345] /sbin/syslogd -n -f /etc/syslog.conf                       -- System log daemon
 EOF
@@ -47,6 +45,7 @@ function pre_make() {
 	sed -i '/Error loading kernel symbols/{n;n;d}' ksym_mod.c
 	sed -i 's/union wait/int/' syslogd.c
 	mkdir -p ${PKG}/{/sbin,etc,usr/share/man/man{5,8}}
+	mkdir -p ${PKG}/etc/finit.d/available
 
 }
 
