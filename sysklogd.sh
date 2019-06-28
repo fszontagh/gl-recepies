@@ -43,9 +43,10 @@ function pre_make() {
 	#${SOURCE_DIR} is the source dir, where run the compile and the make
 	#${1} there is no parameter to the function.
 	# This function called before configure on the source
-
+	cd ${SOURCE_DIR}
 	sed -i '/Error loading kernel symbols/{n;n;d}' ksym_mod.c
-	mkdir -p $PKG/{/sbin,etc,usr/share/man/man{5,8}}
+	sed -i 's/union wait/int/' syslogd.c
+	mkdir -p ${PKG}/{/sbin,etc,usr/share/man/man{5,8}}
 
 }
 
