@@ -1,6 +1,6 @@
 #
 # Package: man-db
-# Tested version: man-db 2.7.1
+# Tested version: man-db 2.8.5
 #
 file_name="${name}"-"${version}".tar.xz
 url=http://savannah.nongnu.org/download/${name}/${file_name}
