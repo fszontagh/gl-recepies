@@ -3,7 +3,7 @@
 # Tested version: python3 3.7.3
 #
 file_name=Python-${version}.tgz
-url=https://www.python.org/ftp/${name}/${version}/${file_name}
+url=https://www.python.org/ftp/python/${version}/${file_name}
 strip=1
 arch=x86_64
 #the default configure options
