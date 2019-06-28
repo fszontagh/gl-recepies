@@ -15,6 +15,7 @@ function post_make() {
 	#${SOURCE_DIR} is the source dir, where run the compile and the make
 	#${1} is equal with the ${SOURCE_DIR}
 	chmod -v 4755 ${PKG}/sbin/unix_chkpwd
+	mkdir -p ${PKG}/lib
 	ln -sv /lib64/libpam.so.0 ${PKG}/lib/
 }
 
