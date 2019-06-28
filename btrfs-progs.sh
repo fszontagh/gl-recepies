@@ -1,6 +1,6 @@
 #
 # Package: btrfs-progs
-# Tested version: btrfs-progs v4.20.2
+# Tested version: btrfs-progs v5.1
 #
 file_name="${name}"-"${version}".tar.xz
 url=https://mirrors.edge.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/${file_name}
