@@ -1,6 +1,6 @@
 #
 # Package: none
-# tested version: none 1.0
+# Tested version: none 1.0
 #
 file_name="${name}"-"${version}".tar.gz
 url=http://quantum-mirror.hu/mirrors/pub/gnusavannah/attr/${file_name}
