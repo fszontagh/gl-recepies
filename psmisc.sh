@@ -2,8 +2,8 @@
 # Package: psmisc
 # Tested version: psmisc 23.2
 #
-file_name="${name}"-"${version}".tar.gz
-url=http://prdownloads.sourceforge.net/psmisc/${file_name}
+file_name="${name}"-"${version}".tar.xz
+url=https://datapacket.dl.sourceforge.net/project/psmisc/${name}/${file_name}
 strip=1
 arch=x86_64
 #the default configure options
