@@ -3,7 +3,7 @@
 # Tested version: reiserfsprogs 3.6.27
 #
 file_name="${name}"-"${version}".tar.gz
-url=https://mirrors.edge.kernel.org/pub/linux/kernel/people/jeffm/${name}/v{$version}/${file_name}
+url=https://mirrors.edge.kernel.org/pub/linux/kernel/people/jeffm/${name}/v${version}/${file_name}
 strip=1
 arch=x86_64
 #the default configure options
