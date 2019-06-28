@@ -1,9 +1,9 @@
 #
 # Package: shadow
-# Tested version: shadow 4.2.1
+# Tested version: shadow 4.7
 #
 file_name="${name}"-"${version}".tar.xz
-url=http://pkg-shadow.alioth.debian.org/releases/${file_name}
+url=https://github.com/shadow-maint/shadow/releases/download/${version}/${file_name}
 strip=1
 arch=x86_64
 #the default configure options
